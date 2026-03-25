@@ -335,14 +335,42 @@
                     <option value="emp_role_pfo">Роль в ПФО (%)</option>
                     <option value="emp_role_rf">Роль в РФ (%)</option>
                 </optgroup>
-                <optgroup label="Отгрузка (тыс. руб.)">
-                    <option value="ship_itogo">Отгрузка всего (2024)</option>
-                    <option value="ship_textile">Текстильное производство</option>
-                    <option value="ship_clothes">Производство одежды</option>
-                    <option value="ship_leather">Кожевенное производство</option>
-                    <option value="ship_share">Доля в экономике региона (%)</option>
-                    <option value="ship_role_pfo">Роль в ПФО (%)</option>
-                    <option value="ship_role_rf">Роль в РФ (%)</option>
+                <optgroup label="Отгрузка 2024 (тыс. руб.)">
+                    <option value="ship24_itogo">Отгрузка всего (2024)</option>
+                    <option value="ship24_textile">Текстильное производство (2024)</option>
+                    <option value="ship24_clothes">Производство одежды (2024)</option>
+                    <option value="ship24_leather">Кожевенное производство (2024)</option>
+                    <option value="ship24_share">Доля в экономике региона (%)</option>
+                    <option value="ship24_role_pfo">Роль в ПФО (%)</option>
+                    <option value="ship24_role_rf">Роль в РФ (%)</option>
+                </optgroup>
+                <optgroup label="Подотрасли отгрузки 2024">
+                    <option value="ship24_textile_spinning">Прядение волокон (2024)</option>
+                    <option value="ship24_textile_fabrics">Текстильные ткани (2024)</option>
+                    <option value="ship24_textile_finishing">Отделка тканей (2024)</option>
+                    <option value="ship24_textile_other">Прочий текстиль (2024)</option>
+                    <option value="ship24_clothes_nonfur">Одежда без меха (2024)</option>
+                    <option value="ship24_clothes_fur">Меховые изделия (2024)</option>
+                    <option value="ship24_clothes_knitwear">Трикотаж (2024)</option>
+                    <option value="ship24_leather_tanning">Дубление кожи (2024)</option>
+                    <option value="ship24_leather_footwear">Обувь (2024)</option>
+                </optgroup>
+                <optgroup label="Отгрузка 2025 (тыс. руб.)">
+                    <option value="ship25_itogo">Отгрузка всего (2025)</option>
+                    <option value="ship25_textile">Текстильное производство (2025)</option>
+                    <option value="ship25_clothes">Производство одежды (2025)</option>
+                    <option value="ship25_leather">Кожевенное производство (2025)</option>
+                </optgroup>
+                <optgroup label="Подотрасли отгрузки 2025">
+                    <option value="ship25_textile_spinning">Прядение волокон (2025)</option>
+                    <option value="ship25_textile_fabrics">Текстильные ткани (2025)</option>
+                    <option value="ship25_textile_finishing">Отделка тканей (2025)</option>
+                    <option value="ship25_textile_other">Прочий текстиль (2025)</option>
+                    <option value="ship25_clothes_nonfur">Одежда без меха (2025)</option>
+                    <option value="ship25_clothes_fur">Меховые изделия (2025)</option>
+                    <option value="ship25_clothes_knitwear">Трикотаж (2025)</option>
+                    <option value="ship25_leather_tanning">Дубление кожи (2025)</option>
+                    <option value="ship25_leather_footwear">Обувь (2025)</option>
                 </optgroup>
                 <optgroup label="Производительность">
                     <option value="prod_value">Отдача на 1 сотрудника (тыс. руб./чел.)</option>
@@ -351,6 +379,11 @@
                 <optgroup label="Специализация">
                     <option value="spec_coeff">Коэффициент специализации</option>
                     <option value="spec_rank">Ранг по специализации</option>
+                </optgroup>
+                <optgroup label="Подушевое производство">
+                    <option value="pc_value">Отгрузка на 1 жителя (тыс. руб./чел.)</option>
+                    <option value="pc_coeff">Коэффициент подушевого производства</option>
+                    <option value="pc_rank">Ранг по подушевому производству</option>
                 </optgroup>
             </select>
         </div>
@@ -395,87 +428,115 @@
 const REGIONS_DATA = {
   "Республика Башкортостан": {
     employment: { itogo: 14930.0, textile: 3207.0, clothes: 10392.0, leather: 1331.0, share: 0.864, role_pfo: 11.79, role_rf: 2.133 },
-    shipment: { itogo: 19055932.25, textile: 6661471.7, clothes: 12001105.86, leather: 393354.69, share: 0.49, role_pfo: 15.351, role_rf: 2.147 },
-    productivity: { value: 1017.04, rank: 4 },
-    specialization: { coeff: 0.638, rank: 6 }
+    shipment2024: { itogo: 19055932.25, textile: 6661471.7, clothes: 12001105.86, leather: 393354.69, share: 0.49, role_pfo: 15.351, role_rf: 2.147, textile_spinning: 19389.39, textile_fabrics: 10870.44, textile_finishing: 0, textile_other: 6631211.87, clothes_nonfur: 11797593.48, clothes_fur: 49597.62, clothes_knitwear: 153914.76, leather_tanning: 186626.48, leather_footwear: 206728.21 },
+    shipment2025: { itogo: 20153937.12, textile: 5860114.97, clothes: 13974927.64, leather: 318894.51, textile_spinning: 24217.02, textile_fabrics: 9204.93, textile_finishing: 0, textile_other: 5826693.02, clothes_nonfur: 13733195.26, clothes_fur: 26395.83, clothes_knitwear: 215336.55, leather_tanning: 103153.2, leather_footwear: 215741.31 },
+    productivity: { value: 1276.35, rank: 4 },
+    specialization: { coeff: 0.899, rank: 6 },
+    perCapita: { value: 4.71, coeff: 0.775, rank: 5 }
   },
   "Республика Марий Эл": {
     employment: { itogo: 2980.0, textile: 537.0, clothes: 1486.0, leather: 957.0, share: 0.997, role_pfo: 2.353, role_rf: 0.426 },
-    shipment: { itogo: 2727789.7, textile: 1008429.8, clothes: 584994.1, leather: 1134365.8, share: 0.614, role_pfo: 2.197, role_rf: 0.307 },
-    productivity: { value: 848.01, rank: 5 },
-    specialization: { coeff: 0.642, rank: 5 }
+    shipment2024: { itogo: 2727789.7, textile: 1008429.8, clothes: 584994.1, leather: 1134365.8, share: 0.614, role_pfo: 2.197, role_rf: 0.307, textile_spinning: 0, textile_fabrics: 0, textile_finishing: 0, textile_other: 1008429.8, clothes_nonfur: 419785.1, clothes_fur: 6537.4, clothes_knitwear: 158671.6, leather_tanning: 0, leather_footwear: 1134365.8 },
+    shipment2025: { itogo: 2808098.8, textile: 823894.5, clothes: 625099.7, leather: 1359104.6, textile_spinning: 0, textile_fabrics: 0, textile_finishing: 0, textile_other: 823894.5, clothes_nonfur: 469543.5, clothes_fur: 2558, clothes_knitwear: 152998.2, leather_tanning: 0, leather_footwear: 1359104.6 },
+    productivity: { value: 915.37, rank: 6 },
+    specialization: { coeff: 1.126, rank: 4 },
+    perCapita: { value: 4.096, coeff: 0.674, rank: 7 }
   },
   "Республика Мордовия": {
     employment: { itogo: 2632.0, textile: 366.0, clothes: 2051.0, leather: 215.0, share: 0.718, role_pfo: 2.078, role_rf: 0.376 },
-    shipment: { itogo: 924664.0, textile: 283818.0, clothes: 640846.0, leather: 0, share: 0.134, role_pfo: 0.745, role_rf: 0.104 },
-    productivity: { value: 296.74, rank: 13 },
-    specialization: { coeff: 0.172, rank: 13 }
+    shipment2024: { itogo: 924664, textile: 283818, clothes: 640846, leather: 0, share: 0.134, role_pfo: 0.745, role_rf: 0.104, textile_spinning: 30465, textile_fabrics: 0, textile_finishing: 0, textile_other: 253353, clothes_nonfur: 635971, clothes_fur: 0, clothes_knitwear: 4875, leather_tanning: 0, leather_footwear: 0 },
+    shipment2025: { itogo: 1035003, textile: 296571, clothes: 738432, leather: 0, textile_spinning: 24639, textile_fabrics: 144, textile_finishing: 0, textile_other: 271788, clothes_nonfur: 732549, clothes_fur: 0, clothes_knitwear: 5883, leather_tanning: 0, leather_footwear: 0 },
+    productivity: { value: 351.32, rank: 13 },
+    specialization: { coeff: 0.245, rank: 13 },
+    perCapita: { value: 1.219, coeff: 0.201, rank: 13 }
   },
   "Республика Татарстан": {
     employment: { itogo: 17622.0, textile: 2909.0, clothes: 13094.0, leather: 1619.0, share: 0.859, role_pfo: 13.915, role_rf: 2.517 },
-    shipment: { itogo: 13858437.15, textile: 5327746.81, clothes: 5841324.07, leather: 2689366.27, share: 0.173, role_pfo: 11.164, role_rf: 1.562 },
-    productivity: { value: 690.04, rank: 9 },
-    specialization: { coeff: 0.507, rank: 9 }
+    shipment2024: { itogo: 13858437.15, textile: 5327746.81, clothes: 5841324.07, leather: 2689366.27, share: 0.173, role_pfo: 11.164, role_rf: 1.562, textile_spinning: 10440, textile_fabrics: 34200, textile_finishing: 12489, textile_other: 5270617.81, clothes_nonfur: 5029456.96, clothes_fur: 59022, clothes_knitwear: 752845.11, leather_tanning: 718174.86, leather_footwear: 1971191.41 },
+    shipment2025: { itogo: 16284629.89, textile: 6317001.59, clothes: 7221850.72, leather: 2745777.58, textile_spinning: 24920, textile_fabrics: 1075173, textile_finishing: 36750, textile_other: 5180158.59, clothes_nonfur: 5768319.74, clothes_fur: 101416, clothes_knitwear: 1352114.98, leather_tanning: 347569.72, leather_footwear: 2398207.85 },
+    productivity: { value: 786.43, rank: 7 },
+    specialization: { coeff: 0.316, rank: 12 },
+    perCapita: { value: 3.45, coeff: 0.568, rank: 8 }
   },
   "Удмуртская Республика": {
     employment: { itogo: 5482.0, textile: 1062.0, clothes: 3916.0, leather: 504.0, share: 0.807, role_pfo: 4.329, role_rf: 0.783 },
-    shipment: { itogo: 3558114.77, textile: 661740.2, clothes: 2604582.57, leather: 291792.0, share: 0.21, role_pfo: 2.866, role_rf: 0.401 },
-    productivity: { value: 603.17, rank: 10 },
-    specialization: { coeff: 0.384, rank: 10 }
+    shipment2024: { itogo: 3558114.77, textile: 661740.2, clothes: 2604582.57, leather: 291792, share: 0.21, role_pfo: 2.866, role_rf: 0.401, textile_spinning: 12, textile_fabrics: 0, textile_finishing: 4650, textile_other: 657078.2, clothes_nonfur: 1324566.57, clothes_fur: 0, clothes_knitwear: 1280016, leather_tanning: 210024, leather_footwear: 81768 },
+    shipment2025: { itogo: 4345673.54, textile: 861092.86, clothes: 3023876.68, leather: 460704, textile_spinning: 4644, textile_fabrics: 0, textile_finishing: 11184, textile_other: 845264.86, clothes_nonfur: 1669157.68, clothes_fur: 0, clothes_knitwear: 1354719, leather_tanning: 356814, leather_footwear: 103890 },
+    productivity: { value: 649.05, rank: 11 },
+    specialization: { coeff: 0.385, rank: 10 },
+    perCapita: { value: 2.493, coeff: 0.41, rank: 10 }
   },
   "Чувашская Республика": {
     employment: { itogo: 12056.0, textile: 2286.0, clothes: 8659.0, leather: 1111.0, share: 2.366, role_pfo: 9.52, role_rf: 1.722 },
-    shipment: { itogo: 9340996.65, textile: 2487113.62, clothes: 5468500.69, leather: 1385382.34, share: 1.136, role_pfo: 7.525, role_rf: 1.053 },
-    productivity: { value: 765.7, rank: 7 },
-    specialization: { coeff: 1.312, rank: 2 }
+    shipment2024: { itogo: 9340996.65, textile: 2487113.62, clothes: 5468500.69, leather: 1385382.34, share: 1.136, role_pfo: 7.525, role_rf: 1.053, textile_spinning: 0, textile_fabrics: 136748.64, textile_finishing: 4500.25, textile_other: 2345864.73, clothes_nonfur: 5340191.31, clothes_fur: 0, clothes_knitwear: 128309.38, leather_tanning: 0, leather_footwear: 1385382.34 },
+    shipment2025: { itogo: 8840458.69, textile: 814390.03, clothes: 6843058, leather: 1183010.66, textile_spinning: 0, textile_fabrics: 131201.6, textile_finishing: 5955.56, textile_other: 677232.87, clothes_nonfur: 6674329, clothes_fur: 0, clothes_knitwear: 168729, leather_tanning: 0, leather_footwear: 1183010.66 },
+    productivity: { value: 774.8, rank: 8 },
+    specialization: { coeff: 2.083, rank: 2 },
+    perCapita: { value: 8.054, coeff: 1.325, rank: 2 }
   },
   "Пермский край": {
     employment: { itogo: 7064.0, textile: 1842.0, clothes: 4821.0, leather: 401.0, share: 0.625, role_pfo: 5.578, role_rf: 1.009 },
-    shipment: { itogo: 15002832.61, textile: 10109325.21, clothes: 4488291.4, leather: 405216.0, share: 0.453, role_pfo: 12.086, role_rf: 1.691 },
-    productivity: { value: 2118.39, rank: 1 },
-    specialization: { coeff: 1.027, rank: 4 }
+    shipment2024: { itogo: 15002832.61, textile: 10109325.21, clothes: 4488291.4, leather: 405216, share: 0.453, role_pfo: 12.086, role_rf: 1.691, textile_spinning: 0, textile_fabrics: 8913900.05, textile_finishing: 6288, textile_other: 1189137.16, clothes_nonfur: 4433043.4, clothes_fur: 0, clothes_knitwear: 55248, leather_tanning: 58296, leather_footwear: 346920 },
+    shipment2025: { itogo: 17028389.87, textile: 11935431.12, clothes: 4695782.75, leather: 397176, textile_spinning: 0, textile_fabrics: 10976914.3, textile_finishing: 7125, textile_other: 951391.82, clothes_nonfur: 4640994.75, clothes_fur: 0, clothes_knitwear: 54788, leather_tanning: 57141, leather_footwear: 340035 },
+    productivity: { value: 2123.84, rank: 1 },
+    specialization: { coeff: 0.831, rank: 7 },
+    perCapita: { value: 6.044, coeff: 0.995, rank: 4 }
   },
   "Кировская область": {
     employment: { itogo: 7721.0, textile: 279.0, clothes: 4956.0, leather: 2486.0, share: 1.45, role_pfo: 6.097, role_rf: 1.103 },
-    shipment: { itogo: 11259585.02, textile: 417000.0, clothes: 5104235.66, leather: 5738349.36, share: 1.317, role_pfo: 9.07, role_rf: 1.269 },
-    productivity: { value: 1329.06, rank: 2 },
-    specialization: { coeff: 1.53, rank: 1 }
+    shipment2024: { itogo: 11259585.02, textile: 417000, clothes: 5104235.66, leather: 5738349.36, share: 1.317, role_pfo: 9.07, role_rf: 1.269, textile_spinning: 0, textile_fabrics: 12000, textile_finishing: 0, textile_other: 405000, clothes_nonfur: 3893939.66, clothes_fur: 365000, clothes_knitwear: 845296, leather_tanning: 1764242.69, leather_footwear: 3974106.66 },
+    shipment2025: { itogo: 11215735.76, textile: 158500, clothes: 5513266.88, leather: 5543968.88, textile_spinning: 0, textile_fabrics: 12000, textile_finishing: 0, textile_other: 146500, clothes_nonfur: 4198419.88, clothes_fur: 377000, clothes_knitwear: 937847, leather_tanning: 2172138.48, leather_footwear: 3371830.4 },
+    productivity: { value: 1458.31, rank: 3 },
+    specialization: { coeff: 2.415, rank: 1 },
+    perCapita: { value: 10.052, coeff: 1.654, rank: 1 }
   },
   "Нижегородская область": {
     employment: { itogo: 14325.0, textile: 3488.0, clothes: 8548.0, leather: 2289.0, share: 0.88, role_pfo: 11.312, role_rf: 2.046 },
-    shipment: { itogo: 21617726.0, textile: 10518462.7, clothes: 8119262.0, leather: 2980001.3, share: 0.575, role_pfo: 17.414, role_rf: 2.436 },
-    productivity: { value: 1325.31, rank: 3 },
-    specialization: { coeff: 1.07, rank: 3 }
+    shipment2024: { itogo: 21617726, textile: 10518462.7, clothes: 8119262, leather: 2980001.3, share: 0.575, role_pfo: 17.414, role_rf: 2.436, textile_spinning: 224308, textile_fabrics: 0, textile_finishing: 26098, textile_other: 10268056.7, clothes_nonfur: 8026864, clothes_fur: 7332, clothes_knitwear: 85066, leather_tanning: 2420130.3, leather_footwear: 559871 },
+    shipment2025: { itogo: 29811649.7, textile: 13808297.3, clothes: 12248144.3, leather: 3755208.1, textile_spinning: 106888, textile_fabrics: 135108, textile_finishing: 52633, textile_other: 13513668.3, clothes_nonfur: 12178288.3, clothes_fur: 5195, clothes_knitwear: 64661, leather_tanning: 2391889.1, leather_footwear: 1363319 },
+    productivity: { value: 1509.09, rank: 2 },
+    specialization: { coeff: 1.054, rank: 5 },
+    perCapita: { value: 7.116, coeff: 1.171, rank: 3 }
   },
   "Оренбургская область": {
     employment: { itogo: 7615.0, textile: 925.0, clothes: 6200.0, leather: 490.0, share: 0.879, role_pfo: 6.013, role_rf: 1.088 },
-    shipment: { itogo: 1431584.7, textile: 560943.5, clothes: 674659.2, leather: 195982.0, share: 0.066, role_pfo: 1.153, role_rf: 0.161 },
-    productivity: { value: 209.79, rank: 14 },
-    specialization: { coeff: 0.148, rank: 14 }
+    shipment2024: { itogo: 1431584.7, textile: 560943.5, clothes: 674659.2, leather: 195982, share: 0.066, role_pfo: 1.153, role_rf: 0.161, textile_spinning: 0, textile_fabrics: 0, textile_finishing: 0, textile_other: 560943.5, clothes_nonfur: 392146.5, clothes_fur: 0, clothes_knitwear: 282512.7, leather_tanning: 11475, leather_footwear: 184507 },
+    shipment2025: { itogo: 1364882.6, textile: 558126.7, clothes: 741932.3, leather: 64823.6, textile_spinning: 0, textile_fabrics: 0, textile_finishing: 0, textile_other: 558126.7, clothes_nonfur: 448228.7, clothes_fur: 0, clothes_knitwear: 293703.6, leather_tanning: 12387.6, leather_footwear: 52436 },
+    productivity: { value: 188.0, rank: 14 },
+    specialization: { coeff: 0.121, rank: 14 },
+    perCapita: { value: 0.788, coeff: 0.13, rank: 14 }
   },
   "Пензенская область": {
     employment: { itogo: 7343.0, textile: 721.0, clothes: 5638.0, leather: 984.0, share: 1.247, role_pfo: 5.799, role_rf: 1.049 },
-    shipment: { itogo: 2653431.42, textile: 1162081.7, clothes: 588751.5, leather: 902598.22, share: 0.319, role_pfo: 2.138, role_rf: 0.299 },
-    productivity: { value: 318.36, rank: 12 },
-    specialization: { coeff: 0.306, rank: 12 }
+    shipment2024: { itogo: 2653431.42, textile: 1162081.7, clothes: 588751.5, leather: 902598.22, share: 0.319, role_pfo: 2.138, role_rf: 0.299, textile_spinning: 0, textile_fabrics: 106188, textile_finishing: 0, textile_other: 1055893.7, clothes_nonfur: 580483.5, clothes_fur: 0, clothes_knitwear: 8268, leather_tanning: 385278, leather_footwear: 517320.22 },
+    shipment2025: { itogo: 2550381.86, textile: 653601, clothes: 745662, leather: 1151118.86, textile_spinning: 0, textile_fabrics: 67401, textile_finishing: 0, textile_other: 586200, clothes_nonfur: 736119, clothes_fur: 0, clothes_knitwear: 9543, leather_tanning: 452016, leather_footwear: 699102.86 },
+    productivity: { value: 361.36, rank: 12 },
+    specialization: { coeff: 0.585, rank: 9 },
+    perCapita: { value: 2.164, coeff: 0.356, rank: 12 }
   },
   "Самарская область": {
     employment: { itogo: 10731.0, textile: 2829.0, clothes: 6946.0, leather: 956.0, share: 0.66, role_pfo: 8.474, role_rf: 1.533 },
-    shipment: { itogo: 7705460.39, textile: 5664526.64, clothes: 1537172.66, leather: 503761.09, share: 0.183, role_pfo: 6.207, role_rf: 0.868 },
-    productivity: { value: 586.67, rank: 11 },
-    specialization: { coeff: 0.345, rank: 11 }
+    shipment2024: { itogo: 7705460.39, textile: 5664526.64, clothes: 1537172.66, leather: 503761.09, share: 0.183, role_pfo: 6.207, role_rf: 0.868, textile_spinning: 0, textile_fabrics: 1594148.75, textile_finishing: 0, textile_other: 4070377.89, clothes_nonfur: 1477736.66, clothes_fur: 22486, clothes_knitwear: 36950, leather_tanning: 231653, leather_footwear: 272108.09 },
+    shipment2025: { itogo: 7165805.36, textile: 5130844, clothes: 1574834.71, leather: 460126.65, textile_spinning: 0, textile_fabrics: 805205.91, textile_finishing: 62436, textile_other: 4263202.1, clothes_nonfur: 1519695.71, clothes_fur: 16509, clothes_knitwear: 38630, leather_tanning: 240930, leather_footwear: 219196.65 },
+    productivity: { value: 718.06, rank: 9 },
+    specialization: { coeff: 0.335, rank: 11 },
+    perCapita: { value: 2.478, coeff: 0.408, rank: 11 }
   },
   "Саратовская область": {
     employment: { itogo: 10165.0, textile: 1680.0, clothes: 8389.0, leather: 96.0, share: 0.886, role_pfo: 8.027, role_rf: 1.452 },
-    shipment: { itogo: 11087062.03, textile: 3908053.06, clothes: 7177056.97, leather: 1952.0, share: 0.798, role_pfo: 8.931, role_rf: 1.249 },
-    productivity: { value: 803.08, rank: 6 },
-    specialization: { coeff: 0.537, rank: 8 }
+    shipment2024: { itogo: 11087062.03, textile: 3908053.06, clothes: 7177056.97, leather: 1952, share: 0.798, role_pfo: 8.931, role_rf: 1.249, textile_spinning: 0, textile_fabrics: 1769744.66, textile_finishing: 0, textile_other: 2138308.4, clothes_nonfur: 6998669.97, clothes_fur: 0, clothes_knitwear: 178387, leather_tanning: 1752, leather_footwear: 200 },
+    shipment2025: { itogo: 20411992.01, textile: 4943206.73, clothes: 15468160.28, leather: 625, textile_spinning: 0, textile_fabrics: 2701513.33, textile_finishing: 0, textile_other: 2241693.4, clothes_nonfur: 15244667.38, clothes_fur: 0, clothes_knitwear: 223492.9, leather_tanning: 625, leather_footwear: 0 },
+    productivity: { value: 1090.71, rank: 5 },
+    specialization: { coeff: 1.464, rank: 3 },
+    perCapita: { value: 4.681, coeff: 0.77, rank: 6 }
   },
   "Ульяновская область": {
     employment: { itogo: 5970.0, textile: 1500.0, clothes: 4334.0, leather: 136.0, share: 1.073, role_pfo: 4.714, role_rf: 0.853 },
-    shipment: { itogo: 3912905.5, textile: 2383492.1, clothes: 1461052.4, leather: 68361.0, share: 0.43, role_pfo: 3.152, role_rf: 0.441 },
-    productivity: { value: 691.18, rank: 8 },
-    specialization: { coeff: 0.559, rank: 7 }
+    shipment2024: { itogo: 3912905.5, textile: 2383492.1, clothes: 1461052.4, leather: 68361, share: 0.43, role_pfo: 3.152, role_rf: 0.441, textile_spinning: 1944, textile_fabrics: 252475, textile_finishing: 0, textile_other: 2129073.1, clothes_nonfur: 1326364.4, clothes_fur: 0, clothes_knitwear: 134688, leather_tanning: 0, leather_footwear: 68361 },
+    shipment2025: { itogo: 3955264.4, textile: 2187995, clothes: 1688233.4, leather: 79036, textile_spinning: 5139, textile_fabrics: 200006, textile_finishing: 0, textile_other: 1982850, clothes_nonfur: 1532668.4, clothes_fur: 0, clothes_knitwear: 155565, leather_tanning: 0, leather_footwear: 79036 },
+    productivity: { value: 655.43, rank: 10 },
+    specialization: { coeff: 0.788, rank: 8 },
+    perCapita: { value: 3.359, coeff: 0.553, rank: 9 }
   },
 };
 
@@ -551,17 +612,42 @@ const SVG_PATHS = {
             emp_share: { category: 'employment', key: 'share', label: 'Доля в экономике', unit: '%', format: 'float' },
             emp_role_pfo: { category: 'employment', key: 'role_pfo', label: 'Роль в ПФО', unit: '%', format: 'float' },
             emp_role_rf: { category: 'employment', key: 'role_rf', label: 'Роль в РФ', unit: '%', format: 'float' },
-            ship_itogo: { category: 'shipment', key: 'itogo', label: 'Отгрузка всего', unit: 'тыс. руб.', format: 'int' },
-            ship_textile: { category: 'shipment', key: 'textile', label: 'Текстильное произв.', unit: 'тыс. руб.', format: 'int' },
-            ship_clothes: { category: 'shipment', key: 'clothes', label: 'Производство одежды', unit: 'тыс. руб.', format: 'int' },
-            ship_leather: { category: 'shipment', key: 'leather', label: 'Кожевенное произв.', unit: 'тыс. руб.', format: 'int' },
-            ship_share: { category: 'shipment', key: 'share', label: 'Доля в экономике', unit: '%', format: 'float' },
-            ship_role_pfo: { category: 'shipment', key: 'role_pfo', label: 'Роль в ПФО', unit: '%', format: 'float' },
-            ship_role_rf: { category: 'shipment', key: 'role_rf', label: 'Роль в РФ', unit: '%', format: 'float' },
+            ship24_itogo: { category: 'shipment2024', key: 'itogo', label: 'Отгрузка всего', unit: 'тыс. руб.', format: 'int' },
+            ship24_textile: { category: 'shipment2024', key: 'textile', label: 'Текстильное произв.', unit: 'тыс. руб.', format: 'int' },
+            ship24_clothes: { category: 'shipment2024', key: 'clothes', label: 'Производство одежды', unit: 'тыс. руб.', format: 'int' },
+            ship24_leather: { category: 'shipment2024', key: 'leather', label: 'Кожевенное произв.', unit: 'тыс. руб.', format: 'int' },
+            ship24_share: { category: 'shipment2024', key: 'share', label: 'Доля в экономике', unit: '%', format: 'float' },
+            ship24_role_pfo: { category: 'shipment2024', key: 'role_pfo', label: 'Роль в ПФО', unit: '%', format: 'float' },
+            ship24_role_rf: { category: 'shipment2024', key: 'role_rf', label: 'Роль в РФ', unit: '%', format: 'float' },
+            ship24_textile_spinning: { category: 'shipment2024', key: 'textile_spinning', label: 'Прядение волокон', unit: 'тыс. руб.', format: 'int' },
+            ship24_textile_fabrics: { category: 'shipment2024', key: 'textile_fabrics', label: 'Текстильные ткани', unit: 'тыс. руб.', format: 'int' },
+            ship24_textile_finishing: { category: 'shipment2024', key: 'textile_finishing', label: 'Отделка тканей', unit: 'тыс. руб.', format: 'int' },
+            ship24_textile_other: { category: 'shipment2024', key: 'textile_other', label: 'Прочий текстиль', unit: 'тыс. руб.', format: 'int' },
+            ship24_clothes_nonfur: { category: 'shipment2024', key: 'clothes_nonfur', label: 'Одежда без меха', unit: 'тыс. руб.', format: 'int' },
+            ship24_clothes_fur: { category: 'shipment2024', key: 'clothes_fur', label: 'Меховые изделия', unit: 'тыс. руб.', format: 'int' },
+            ship24_clothes_knitwear: { category: 'shipment2024', key: 'clothes_knitwear', label: 'Трикотаж', unit: 'тыс. руб.', format: 'int' },
+            ship24_leather_tanning: { category: 'shipment2024', key: 'leather_tanning', label: 'Дубление кожи', unit: 'тыс. руб.', format: 'int' },
+            ship24_leather_footwear: { category: 'shipment2024', key: 'leather_footwear', label: 'Обувь', unit: 'тыс. руб.', format: 'int' },
+            ship25_itogo: { category: 'shipment2025', key: 'itogo', label: 'Отгрузка всего', unit: 'тыс. руб.', format: 'int' },
+            ship25_textile: { category: 'shipment2025', key: 'textile', label: 'Текстильное произв.', unit: 'тыс. руб.', format: 'int' },
+            ship25_clothes: { category: 'shipment2025', key: 'clothes', label: 'Производство одежды', unit: 'тыс. руб.', format: 'int' },
+            ship25_leather: { category: 'shipment2025', key: 'leather', label: 'Кожевенное произв.', unit: 'тыс. руб.', format: 'int' },
+            ship25_textile_spinning: { category: 'shipment2025', key: 'textile_spinning', label: 'Прядение волокон', unit: 'тыс. руб.', format: 'int' },
+            ship25_textile_fabrics: { category: 'shipment2025', key: 'textile_fabrics', label: 'Текстильные ткани', unit: 'тыс. руб.', format: 'int' },
+            ship25_textile_finishing: { category: 'shipment2025', key: 'textile_finishing', label: 'Отделка тканей', unit: 'тыс. руб.', format: 'int' },
+            ship25_textile_other: { category: 'shipment2025', key: 'textile_other', label: 'Прочий текстиль', unit: 'тыс. руб.', format: 'int' },
+            ship25_clothes_nonfur: { category: 'shipment2025', key: 'clothes_nonfur', label: 'Одежда без меха', unit: 'тыс. руб.', format: 'int' },
+            ship25_clothes_fur: { category: 'shipment2025', key: 'clothes_fur', label: 'Меховые изделия', unit: 'тыс. руб.', format: 'int' },
+            ship25_clothes_knitwear: { category: 'shipment2025', key: 'clothes_knitwear', label: 'Трикотаж', unit: 'тыс. руб.', format: 'int' },
+            ship25_leather_tanning: { category: 'shipment2025', key: 'leather_tanning', label: 'Дубление кожи', unit: 'тыс. руб.', format: 'int' },
+            ship25_leather_footwear: { category: 'shipment2025', key: 'leather_footwear', label: 'Обувь', unit: 'тыс. руб.', format: 'int' },
             prod_value: { category: 'productivity', key: 'value', label: 'Отдача на сотрудника', unit: 'тыс. руб./чел.', format: 'float' },
             prod_rank: { category: 'productivity', key: 'rank', label: 'Ранг производительности', unit: '', format: 'rank' },
             spec_coeff: { category: 'specialization', key: 'coeff', label: 'Коэффициент специализации', unit: '', format: 'float' },
-            spec_rank: { category: 'specialization', key: 'rank', label: 'Ранг специализации', unit: '', format: 'rank' }
+            spec_rank: { category: 'specialization', key: 'rank', label: 'Ранг специализации', unit: '', format: 'rank' },
+            pc_value: { category: 'perCapita', key: 'value', label: 'Отгрузка на 1 жителя', unit: 'тыс. руб./чел.', format: 'float' },
+            pc_coeff: { category: 'perCapita', key: 'coeff', label: 'Коэффициент подушевого производства', unit: '', format: 'float' },
+            pc_rank: { category: 'perCapita', key: 'rank', label: 'Ранг подушевого производства', unit: '', format: 'rank' }
         };
         
         const TITLES = {
@@ -572,17 +658,42 @@ const SVG_PATHS = {
             emp_share: 'Доля лёгкой промышленности в экономике регионов (%)',
             emp_role_pfo: 'Роль регионов в занятости ПФО (%)',
             emp_role_rf: 'Роль регионов в занятости РФ (%)',
-            ship_itogo: 'Отгрузка товаров лёгкой промышленности (2024)',
-            ship_textile: 'Отгрузка текстильных изделий (2024)',
-            ship_clothes: 'Отгрузка одежды (2024)',
-            ship_leather: 'Отгрузка кожевенных изделий (2024)',
-            ship_share: 'Доля лёгкой промышленности в отгрузке регионов (%)',
-            ship_role_pfo: 'Роль регионов в отгрузке ПФО (%)',
-            ship_role_rf: 'Роль регионов в отгрузке РФ (%)',
-            prod_value: 'Производительность труда (отдача на 1 сотрудника)',
-            prod_rank: 'Ранги регионов по производительности',
-            spec_coeff: 'Коэффициент специализации на лёгкой промышленности',
-            spec_rank: 'Ранги регионов по специализации'
+            ship24_itogo: 'Отгрузка товаров лёгкой промышленности (2024)',
+            ship24_textile: 'Отгрузка текстильных изделий (2024)',
+            ship24_clothes: 'Отгрузка одежды (2024)',
+            ship24_leather: 'Отгрузка кожевенных изделий (2024)',
+            ship24_share: 'Доля лёгкой промышленности в отгрузке регионов (2024, %)',
+            ship24_role_pfo: 'Роль регионов в отгрузке ПФО (2024, %)',
+            ship24_role_rf: 'Роль регионов в отгрузке РФ (2024, %)',
+            ship24_textile_spinning: 'Отгрузка: прядение волокон (2024)',
+            ship24_textile_fabrics: 'Отгрузка: текстильные ткани (2024)',
+            ship24_textile_finishing: 'Отгрузка: отделка тканей (2024)',
+            ship24_textile_other: 'Отгрузка: прочий текстиль (2024)',
+            ship24_clothes_nonfur: 'Отгрузка: одежда без меха (2024)',
+            ship24_clothes_fur: 'Отгрузка: меховые изделия (2024)',
+            ship24_clothes_knitwear: 'Отгрузка: трикотаж (2024)',
+            ship24_leather_tanning: 'Отгрузка: дубление кожи (2024)',
+            ship24_leather_footwear: 'Отгрузка: обувь (2024)',
+            ship25_itogo: 'Отгрузка товаров лёгкой промышленности (2025)',
+            ship25_textile: 'Отгрузка текстильных изделий (2025)',
+            ship25_clothes: 'Отгрузка одежды (2025)',
+            ship25_leather: 'Отгрузка кожевенных изделий (2025)',
+            ship25_textile_spinning: 'Отгрузка: прядение волокон (2025)',
+            ship25_textile_fabrics: 'Отгрузка: текстильные ткани (2025)',
+            ship25_textile_finishing: 'Отгрузка: отделка тканей (2025)',
+            ship25_textile_other: 'Отгрузка: прочий текстиль (2025)',
+            ship25_clothes_nonfur: 'Отгрузка: одежда без меха (2025)',
+            ship25_clothes_fur: 'Отгрузка: меховые изделия (2025)',
+            ship25_clothes_knitwear: 'Отгрузка: трикотаж (2025)',
+            ship25_leather_tanning: 'Отгрузка: дубление кожи (2025)',
+            ship25_leather_footwear: 'Отгрузка: обувь (2025)',
+            prod_value: 'Производительность труда (отдача на 1 сотрудника, 2024)',
+            prod_rank: 'Ранги регионов по производительности (2024)',
+            spec_coeff: 'Коэффициент специализации на лёгкой промышленности (2024)',
+            spec_rank: 'Ранги регионов по специализации (2024)',
+            pc_value: 'Подушевое производство лёгкой промышленности (2024)',
+            pc_coeff: 'Коэффициент подушевого производства (2024)',
+            pc_rank: 'Ранги регионов по подушевому производству (2024)'
         };
         
         let currentIndicator = 'emp_itogo';
@@ -594,6 +705,62 @@ const SVG_PATHS = {
             if (format === 'float') return val.toFixed(2);
             if (format === 'rank') return Math.round(val);
             return val;
+        }
+
+        function formatLegendNumber(val) {
+            return Math.round(val).toLocaleString('ru-RU');
+        }
+
+        function getNiceStep(min, max, targetBins = 5) {
+            const spread = Math.max(max - min, 1);
+            const rawStep = spread / targetBins;
+
+            if (rawStep <= 1) return 1;
+
+            const magnitude = Math.pow(10, Math.floor(Math.log10(rawStep)));
+            const normalized = rawStep / magnitude;
+
+            let niceBase;
+            if (normalized <= 1) niceBase = 1;
+            else if (normalized <= 2) niceBase = 2;
+            else if (normalized <= 5) niceBase = 5;
+            else niceBase = 10;
+
+            return niceBase * magnitude;
+        }
+
+        function getLegendEntries(indicator) {
+            const ind = INDICATORS[indicator];
+            const range = getValueRange(indicator);
+            const isRank = ind.format === 'rank';
+
+            if (isRank) {
+                return [
+                    { color: '#1b5e20', label: '1-3 место (лучший)' },
+                    { color: '#4caf50', label: '4-6 место (высокий)' },
+                    { color: '#81c784', label: '7-9 место (средний)' },
+                    { color: '#c8e6c9', label: '10-12 место (низкий)' },
+                    { color: '#ffd54f', label: '13-14 место (худший)' }
+                ];
+            }
+
+            const step = getNiceStep(range.min, range.max);
+            const start = Math.floor(range.min / step) * step;
+            const end = Math.max(start + step, Math.ceil(range.max / step) * step);
+            const entries = [];
+
+            for (let from = start; from < end; from += step) {
+                const to = Math.min(from + step, end);
+                const sample = (from + to) / 2;
+                const unit = ind.unit ? ` ${ind.unit}` : '';
+
+                entries.push({
+                    color: getColor(sample, range.min, range.max, false),
+                    label: `${formatLegendNumber(from)}-${formatLegendNumber(to)}${unit}`
+                });
+            }
+
+            return entries;
         }
         
         // Получить значение показателя для региона
@@ -669,35 +836,14 @@ const SVG_PATHS = {
         // Создать легенду
         function updateLegend(indicator) {
             const legend = document.getElementById('legend');
-            const ind = INDICATORS[indicator];
-            const range = getValueRange(indicator);
-            const isRank = ind.format === 'rank';
-            
-            if (isRank) {
-                legend.innerHTML = `
-                    <div class="legend-item"><div class="legend-color" style="background:#1b5e20"></div> 1-3 место (лучший)</div>
-                    <div class="legend-item"><div class="legend-color" style="background:#4caf50"></div> 4-6 место (высокий)</div>
-                    <div class="legend-item"><div class="legend-color" style="background:#81c784"></div> 7-9 место (средний)</div>
-                    <div class="legend-item"><div class="legend-color" style="background:#c8e6c9"></div> 10-12 место (низкий)</div>
-                    <div class="legend-item"><div class="legend-color" style="background:#ffd54f"></div> 13-14 место (худший)</div>
-                `;
-            } else {
-                const step = (range.max - range.min) / 4;
-                const stops = [
-                    range.min,
-                    range.min + step,
-                    range.min + step * 2,
-                    range.min + step * 3,
-                    range.max
-                ];
-                
-                legend.innerHTML = stops.map((v, i) => `
-                    <div class="legend-item">
-                        <div class="legend-color" style="background:${getColor(v, range.min, range.max, false)}"></div>
-                        ${formatNumber(v, ind.format)} ${ind.unit}
-                    </div>
-                `).join('');
-            }
+            const entries = getLegendEntries(indicator);
+
+            legend.innerHTML = entries.map(entry => `
+                <div class="legend-item">
+                    <div class="legend-color" style="background:${entry.color}"></div>
+                    ${entry.label}
+                </div>
+            `).join('');
         }
         
         // Обновить статистику
@@ -756,14 +902,40 @@ const SVG_PATHS = {
                 </div>
                 
                 <div class="category-section">
-                    <div class="category-title">Отгрузка (тыс. руб.)</div>
-                    <div class="detail-row"><span class="detail-label">Всего:</span><span class="detail-value">${formatVal(region.shipment.itogo, 'int')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Текстиль:</span><span class="detail-value">${formatVal(region.shipment.textile, 'int')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Одежда:</span><span class="detail-value">${formatVal(region.shipment.clothes, 'int')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Кожа:</span><span class="detail-value">${formatVal(region.shipment.leather, 'int')}</span></div>
-                    <div class="detail-row"><span class="detail-label">Доля в экономике:</span><span class="detail-value">${formatVal(region.shipment.share, 'float')}%</span></div>
-                    <div class="detail-row"><span class="detail-label">Роль в ПФО:</span><span class="detail-value">${formatVal(region.shipment.role_pfo, 'float')}%</span></div>
-                    <div class="detail-row"><span class="detail-label">Роль в РФ:</span><span class="detail-value">${formatVal(region.shipment.role_rf, 'float')}%</span></div>
+                    <div class="category-title">Отгрузка 2024 (тыс. руб.)</div>
+                    <div class="detail-row"><span class="detail-label">Всего:</span><span class="detail-value">${formatVal(region.shipment2024.itogo, 'int')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Текстиль:</span><span class="detail-value">${formatVal(region.shipment2024.textile, 'int')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Прядение волокон:</span><span class="detail-value">${formatVal(region.shipment2024.textile_spinning, 'int')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Текстильные ткани:</span><span class="detail-value">${formatVal(region.shipment2024.textile_fabrics, 'int')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Отделка тканей:</span><span class="detail-value">${formatVal(region.shipment2024.textile_finishing, 'int')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Прочий текстиль:</span><span class="detail-value">${formatVal(region.shipment2024.textile_other, 'int')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Одежда:</span><span class="detail-value">${formatVal(region.shipment2024.clothes, 'int')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Одежда без меха:</span><span class="detail-value">${formatVal(region.shipment2024.clothes_nonfur, 'int')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Меховые изделия:</span><span class="detail-value">${formatVal(region.shipment2024.clothes_fur, 'int')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Трикотаж:</span><span class="detail-value">${formatVal(region.shipment2024.clothes_knitwear, 'int')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Кожа:</span><span class="detail-value">${formatVal(region.shipment2024.leather, 'int')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Дубление кожи:</span><span class="detail-value">${formatVal(region.shipment2024.leather_tanning, 'int')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Обувь:</span><span class="detail-value">${formatVal(region.shipment2024.leather_footwear, 'int')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Доля в экономике:</span><span class="detail-value">${formatVal(region.shipment2024.share, 'float')}%</span></div>
+                    <div class="detail-row"><span class="detail-label">Роль в ПФО:</span><span class="detail-value">${formatVal(region.shipment2024.role_pfo, 'float')}%</span></div>
+                    <div class="detail-row"><span class="detail-label">Роль в РФ:</span><span class="detail-value">${formatVal(region.shipment2024.role_rf, 'float')}%</span></div>
+                </div>
+
+                <div class="category-section">
+                    <div class="category-title">Отгрузка 2025 (тыс. руб.)</div>
+                    <div class="detail-row"><span class="detail-label">Всего:</span><span class="detail-value">${formatVal(region.shipment2025.itogo, 'int')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Текстиль:</span><span class="detail-value">${formatVal(region.shipment2025.textile, 'int')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Прядение волокон:</span><span class="detail-value">${formatVal(region.shipment2025.textile_spinning, 'int')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Текстильные ткани:</span><span class="detail-value">${formatVal(region.shipment2025.textile_fabrics, 'int')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Отделка тканей:</span><span class="detail-value">${formatVal(region.shipment2025.textile_finishing, 'int')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Прочий текстиль:</span><span class="detail-value">${formatVal(region.shipment2025.textile_other, 'int')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Одежда:</span><span class="detail-value">${formatVal(region.shipment2025.clothes, 'int')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Одежда без меха:</span><span class="detail-value">${formatVal(region.shipment2025.clothes_nonfur, 'int')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Меховые изделия:</span><span class="detail-value">${formatVal(region.shipment2025.clothes_fur, 'int')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Трикотаж:</span><span class="detail-value">${formatVal(region.shipment2025.clothes_knitwear, 'int')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Кожа:</span><span class="detail-value">${formatVal(region.shipment2025.leather, 'int')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Дубление кожи:</span><span class="detail-value">${formatVal(region.shipment2025.leather_tanning, 'int')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Обувь:</span><span class="detail-value">${formatVal(region.shipment2025.leather_footwear, 'int')}</span></div>
                 </div>
                 
                 <div class="category-section">
@@ -776,6 +948,13 @@ const SVG_PATHS = {
                     <div class="category-title">Специализация</div>
                     <div class="detail-row"><span class="detail-label">Коэффициент:</span><span class="detail-value">${formatVal(region.specialization.coeff, 'float')}</span></div>
                     <div class="detail-row"><span class="detail-label">Ранг:</span><span class="detail-value"><span class="rank-badge ${getRankClass(region.specialization.rank)}">${region.specialization.rank}</span></span></div>
+                </div>
+
+                <div class="category-section">
+                    <div class="category-title">Подушевое производство</div>
+                    <div class="detail-row"><span class="detail-label">Отгрузка на 1 жителя:</span><span class="detail-value">${formatVal(region.perCapita.value, 'float')} тыс. руб./чел.</span></div>
+                    <div class="detail-row"><span class="detail-label">Коэффициент:</span><span class="detail-value">${formatVal(region.perCapita.coeff, 'float')}</span></div>
+                    <div class="detail-row"><span class="detail-label">Ранг:</span><span class="detail-value"><span class="rank-badge ${getRankClass(region.perCapita.rank)}">${region.perCapita.rank}</span></span></div>
                 </div>
             `;
         }
@@ -851,19 +1030,50 @@ const SVG_PATHS = {
             
             const svgData = new XMLSerializer().serializeToString(svg);
             const img = new Image();
+            const legendEntries = getLegendEntries(currentIndicator);
             
-            canvas.width = 1200;
-            canvas.height = 900;
+            canvas.width = 1600;
+            canvas.height = 980;
             
             img.onload = function() {
                 ctx.fillStyle = '#1a1a2e';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.drawImage(img, 150, 50, 900, 700);
+                ctx.drawImage(img, 70, 110, 980, 760);
                 
                 ctx.fillStyle = '#fff';
                 ctx.font = 'bold 24px Segoe UI';
                 ctx.textAlign = 'center';
-                ctx.fillText(TITLES[currentIndicator], canvas.width / 2, 30);
+                ctx.fillText(TITLES[currentIndicator], canvas.width / 2, 45);
+
+                const legendX = 1110;
+                const legendY = 120;
+                const legendWidth = 410;
+                const legendHeight = 90 + legendEntries.length * 52;
+
+                ctx.fillStyle = 'rgba(255,255,255,0.08)';
+                roundRect(ctx, legendX, legendY, legendWidth, legendHeight, 18, true, false);
+
+                ctx.strokeStyle = 'rgba(76, 175, 80, 0.45)';
+                ctx.lineWidth = 2;
+                roundRect(ctx, legendX, legendY, legendWidth, legendHeight, 18, false, true);
+
+                ctx.textAlign = 'left';
+                ctx.fillStyle = '#4caf50';
+                ctx.font = 'bold 28px Segoe UI';
+                ctx.fillText('Легенда', legendX + 24, legendY + 42);
+
+                ctx.font = '18px Segoe UI';
+                ctx.fillStyle = '#ffffff';
+
+                legendEntries.forEach((entry, index) => {
+                    const rowY = legendY + 80 + index * 52;
+
+                    ctx.fillStyle = entry.color;
+                    roundRect(ctx, legendX + 24, rowY - 18, 44, 28, 6, true, false);
+
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillText(entry.label, legendX + 84, rowY + 2);
+                });
                 
                 const link = document.createElement('a');
                 link.download = 'pfo-light-industry-map.png';
@@ -872,6 +1082,23 @@ const SVG_PATHS = {
             };
             
             img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+        }
+
+        function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
+            ctx.beginPath();
+            ctx.moveTo(x + radius, y);
+            ctx.lineTo(x + width - radius, y);
+            ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+            ctx.lineTo(x + width, y + height - radius);
+            ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+            ctx.lineTo(x + radius, y + height);
+            ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+            ctx.lineTo(x, y + radius);
+            ctx.quadraticCurveTo(x, y, x + radius, y);
+            ctx.closePath();
+
+            if (fill) ctx.fill();
+            if (stroke) ctx.stroke();
         }
         
         // Инициализация

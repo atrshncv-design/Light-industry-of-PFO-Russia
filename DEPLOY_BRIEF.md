@@ -1,149 +1,68 @@
-# Данные Для Деплоя Карты ПФО
+# Deployment Brief For The Archived PFO Map
 
-## 1. Что это за страница
+## 1. What this repository contains
 
-Это одностраничная интерактивная HTML-карта:
+This repository is meant to distribute the exact map version from the delivered archive.
 
-- Название: `Ситуация в лёгкой промышленности ПФО`
-- Тип: статическая веб-страница без backend
-- Формат: один файл `index.html`
-- Назначение: визуализация показателей лёгкой промышленности регионов Приволжского федерального округа
+Project type:
+- static HTML page
+- no backend required for deployment
+- no build step
+- no database
+- no environment variables
 
-## 2. Главный файл
+## 2. Canonical files
 
-Точка входа:
-
+Main published file:
 - `index.html`
 
-Абсолютный путь локально:
+Matching source copy:
+- `public/pfo-light-industry.html`
 
-- `/Users/aleksandrtrisenkov/Desktop/PET2/pfo-map/index.html`
+Reference archive variant:
+- `public/pfo-light-industry-map.html`
 
-## 3. Структура проекта
+Optional local preview server:
+- `server.js`
 
-Проект самодостаточный и не требует сборки:
+## 3. What the page shows
 
-- `index.html` — вся страница целиком
-- `DEPLOY_BRIEF.md` — этот документ
+The page is an interactive map of the light industry situation in the Volga Federal District.
 
-Внутри `index.html` уже встроены:
+Included data groups in this archived version:
+- employment
+- shipment
+- productivity
+- specialization
 
-- HTML-разметка
-- CSS-стили
-- JavaScript-логика
-- SVG-контуры регионов ПФО
-- все данные по регионам
+This repository should publish this exact version, not a different extended or alternate map build.
 
-## 4. Что умеет страница
+## 4. Deployment requirements
 
-Страница поддерживает:
+A regular static host is enough.
 
-- переключение показателей через выпадающий список
-- отображение карты ПФО по цветовой шкале
-- отображение статистики по выбранному показателю
-- отображение детальной карточки региона
-- экспорт карты в `PNG`
-- экспорт с легендой
+Required behavior:
+1. Use `index.html` as the entry point.
+2. Serve it as a UTF-8 HTML document.
+3. Keep the repository files as-is.
 
-## 5. Какие данные уже встроены
+No install or build commands are needed.
 
-В карту уже встроены данные по 14 регионам ПФО.
+## 5. Local preview
 
-Категории данных:
+Two simple ways to check the map locally:
+1. Open `index.html` directly in a browser.
+2. Run `node server.js` and open `http://localhost:3000/`.
 
-- занятость за `2024`
-- отгрузка за `2024`
-- отгрузка за `2025`
-- подотрасли отгрузки за `2024`
-- подотрасли отгрузки за `2025`
-- производительность за `2024`
-- коэффициент специализации за `2024`
-- коэффициент подушевого производства за `2024`
+## 6. Post-deploy verification
 
-Подотрасли отгрузки:
+After upload, verify that:
+1. the page title is `Ситуация в лёгкой промышленности ПФО`
+2. the map renders correctly
+3. the selector changes indicators
+4. regional details update on click
+5. PNG export works
 
-- прядение волокон
-- текстильные ткани
-- отделка тканей
-- прочий текстиль
-- одежда без меха
-- меховые изделия
-- трикотаж
-- дубление кожи
-- обувь
+## 7. Publishing note
 
-## 6. Важные особенности данных
-
-- Данные `2024` и `2025` разведены отдельно и не смешиваются.
-- Для `2025` на карте добавлены отдельные показатели отгрузки и подотраслей.
-- Показатели `доля в экономике`, `роль в ПФО`, `роль в РФ` используются только там, где они реально есть в исходной таблице.
-
-## 7. Технические требования для деплоя
-
-Нужен обычный статический хостинг.
-
-Требования:
-
-- не нужен Node.js backend
-- не нужен build step
-- не нужны npm-зависимости
-- не нужны env-переменные
-- не нужна база данных
-
-Достаточно:
-
-1. загрузить файл `index.html`
-2. отдать его как обычную статическую HTML-страницу
-3. убедиться, что кодировка файла — `UTF-8`
-
-## 8. Что должен сделать сторонний сервис
-
-Если сервис деплоит статические сайты, ему нужно:
-
-1. принять папку или файл с проектом
-2. использовать `index.html` как entry point
-3. опубликовать страницу как статический сайт
-
-Если сервис принимает только инструкции, можно передать ему это:
-
-> Разверните статический сайт из одного файла `index.html`.  
-> Никакая сборка не требуется.  
-> Все стили, скрипты, SVG-контуры и данные уже встроены внутрь файла.  
-> Нужно просто опубликовать страницу как обычный HTML-документ.
-
-## 9. Проверка после деплоя
-
-После публикации нужно проверить:
-
-1. открывается ли заголовок `Ситуация в лёгкой промышленности ПФО`
-2. работает ли карта регионов
-3. работает ли выбор показателей
-4. отображаются ли показатели за `2024` и `2025`
-5. работает ли экспорт `PNG`
-6. присутствует ли легенда в экспортированном `PNG`
-
-## 10. Дополнительная информация для передачи
-
-Формат проекта:
-
-- frontend-only
-- static HTML
-- client-side JavaScript
-
-Подходит для:
-
-- Netlify
-- Vercel Static
-- GitHub Pages
-- Cloudflare Pages
-- любой другой static hosting service
-
-## 11. Что отправлять на деплой
-
-Минимально достаточно отправить:
-
-- `/Users/aleksandrtrisenkov/Desktop/PET2/pfo-map/index.html`
-
-Если нужен сопроводительный документ, отправить вместе с ним:
-
-- `/Users/aleksandrtrisenkov/Desktop/PET2/pfo-map/DEPLOY_BRIEF.md`
+If someone opens or downloads this repository, they should receive the archived map version represented by the current `index.html`.

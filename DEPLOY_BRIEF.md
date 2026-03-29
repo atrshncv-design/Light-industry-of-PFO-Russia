@@ -1,8 +1,8 @@
-# Deployment Brief For The Archived PFO Map
+# Deployment Brief For The Current PFO Map
 
 ## 1. What this repository contains
 
-This repository is meant to distribute the exact map version from the delivered archive.
+This repository is meant to distribute the exact map version from the latest delivered archive.
 
 Project type:
 - static HTML page
@@ -16,26 +16,27 @@ Project type:
 Main published file:
 - `index.html`
 
-Matching source copy:
+Related archive page:
 - `public/pfo-light-industry.html`
 
 Reference archive variant:
 - `public/pfo-light-industry-map.html`
 
-Optional local preview server:
-- `server.js`
-
 ## 3. What the page shows
 
 The page is an interactive map of the light industry situation in the Volga Federal District.
 
-Included data groups in this archived version:
-- employment
-- shipment
-- productivity
-- specialization
+Included data groups in this version:
+- employment for `2024`
+- shipment for `2024`
+- shipment for `2025`
+- shipment subcategories for `2024`
+- shipment subcategories for `2025`
+- productivity for `2024`
+- specialization for `2024`
+- per-capita production for `2024`
 
-This repository should publish this exact version, not a different extended or alternate map build.
+This repository should publish this exact version, not a different archived or simplified map build.
 
 ## 4. Deployment requirements
 
@@ -50,9 +51,8 @@ No install or build commands are needed.
 
 ## 5. Local preview
 
-Two simple ways to check the map locally:
+To check the map locally:
 1. Open `index.html` directly in a browser.
-2. Run `node server.js` and open `http://localhost:3000/`.
 
 ## 6. Post-deploy verification
 
@@ -60,9 +60,10 @@ After upload, verify that:
 1. the page title is `Ситуация в лёгкой промышленности ПФО`
 2. the map renders correctly
 3. the selector changes indicators
-4. regional details update on click
-5. PNG export works
+4. the `2024` and `2025` shipment views are available
+5. regional details update on click
+6. PNG export works
 
 ## 7. Publishing note
 
-If someone opens or downloads this repository, they should receive the archived map version represented by the current `index.html`.
+If someone opens or downloads this repository, they should receive the current archive-based map version represented by `index.html`, which should be treated as the canonical published file.

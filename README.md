@@ -1,25 +1,25 @@
 # PFO Light Industry Map
 
-This repository contains the exact static HTML version of the PFO light industry map from the latest delivered archive.
+This repository contains the current map application from the delivered archive.
 
-## Canonical files
-- `index.html` is the main file to publish and open.
-- `public/pfo-light-industry.html` is the full archive page kept alongside the main published file.
-- `public/pfo-light-industry-map.html` is the archive reference variant.
+## What is in this repository
+- Next.js wrapper application in the repository root
+- full-screen map entry in `src/app/page.tsx`
+- canonical published map file in `public/pfo-map.html`
+- supporting assets such as `public/pfo-logo.svg` and `public/pfo-robots.txt`
+- source data and helper scripts in `download/`
 
-## Included data
-- employment for 2024
-- shipment for 2024
-- shipment for 2025
-- shipment subcategories for 2024 and 2025
-- productivity
-- specialization
-- per-capita production
+## Canonical version
+- The canonical application lives in the repository root.
+- The canonical map file for publication is `public/pfo-map.html`.
+- This repository is intended to download and publish this exact map version from the archive.
 
-## Local preview
-- Open `index.html` directly in a browser.
+## Local run
+```bash
+npm install
+npm run dev
+```
 
 ## Notes
-- The repository is intended to download and publish this exact map version.
-- `index.html` should be treated as the canonical published map for this repository.
-- No build step, database, or environment variables are required.
+- Local-only archive artifacts such as `.env`, `upload/`, `worklog.md`, and the nested `Light-industry-of-PFO-Russia/` repository are intentionally excluded from this repository.
+- If someone opens or downloads this repository, they should receive this map version, not a different archive snapshot.
